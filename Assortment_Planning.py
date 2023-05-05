@@ -200,7 +200,7 @@ if rad=='Shelf Space Optimization':
                             
                 dfv = pd.DataFrame(data = val_Matrix,columns=w,index=['Shelf1','Shelf2','Shelf3','Shelf4','Shelf5'])
                 st.subheader('Estimated Sales as per plan')
-                st.dataframe(data=dfv)
+                st.table(data=dfv)
                 
                 st.write('Maximum Sales obtained:',value(prob.objective))
                 
