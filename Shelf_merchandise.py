@@ -336,6 +336,8 @@ if rad=='Market Basket':
         df=pd.read_excel(f)
         df['Item']=df['Brand']+'_'+df['Sub_Category']
         df=df[['Invoice_ID','Item']]
+        for i in range(len(df)):
+            df['Item'][i]=df['Item'][i].split('(')[0].rstrip()
         df['Quantity']=1
         df['Invoice_ID'] = df['Invoice_ID'].astype('str')
         
@@ -356,6 +358,7 @@ if rad=='Market Basket':
         my_rules = association_rules(my_frequent_itemsets, metric="lift", min_threshold=1)
         
         s=my_rules.sort_values("confidence",ascending=False).reset_index(drop=True)
+        s=s[ (s['lift'] >= 1) &(s['lift'] <= 50) ]
         
         if(st.button('Submit')):
             progress=st.progress(0)
