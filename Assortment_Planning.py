@@ -35,13 +35,13 @@ from mlxtend.frequent_patterns import association_rules
 import time
 from time import sleep
 
-rad = st.sidebar.radio('Navigation',['Space Assortment','Shelf Space Optimization','Market Basket'])
+rad = st.sidebar.radio('Navigation',['Assortment','Shelf Space Optimization','Market Basket'])
 
-if rad=='Space Assortment':
+if rad=='Assortment':
     
     try:
         
-        st.header('SPACE ASSORTMENT PLANNING')
+        st.header('ASSORTMENT PLANNING')
         
         st.image('Assortment.png',use_column_width=True)
         
