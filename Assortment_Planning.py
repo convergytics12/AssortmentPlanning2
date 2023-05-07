@@ -321,6 +321,38 @@ if rad=='Shelf Space Optimization':
                 per_inc = round(((value(prob.objective)-sum(r))/sum(r))*100,2)
                 
                 st.write('Percentage increase in revenue:',per_inc,'%')
+                
+                st.subheader('Representation of shelf')
+                table_data=matrix.tolist()
+                col_names = ['GOODDAY', 'MOMS_MAGIC', 'HIDE_N_SEEK', 'BOURBON', 'MARIE']
+                row_names = ['Shelf 1', 'Shelf 2', 'Shelf 3', 'Shelf 4', 'Shelf 5']
+                images = [Image.open(f"{name}.png") for name in col_names]
+                
+                for i in range(len(images)):
+                    for j in range(len(images)):
+                        if table_data[i][j] == 1:
+                            table_data[i][j] = images[j]
+                        else:
+                            table_data[i][j] = 0
+                            
+                dfss = pd.DataFrame(table_data, columns=col_names, index=row_names)
+                
+                dfss = pd.concat([pd.DataFrame([[0]*len(col_names)], columns=col_names, index=['New Row']), dfss], axis=0)
+                dfss.insert(0, ' ', [0]*len(dfss))
+                
+                for i in range(len(dfss)):
+                    cols = st.columns(len(dfss.columns))
+                    for j, col in enumerate(dfss.columns):
+                        if i == 0:
+                            cols[j].markdown(f"<h6>{col}</h6>", unsafe_allow_html=True)
+                        elif j == 0:
+                            cols[j].write(dfss.index[i])
+                        elif isinstance(dfss.iloc[i, j], Image.Image):
+                            cols[j].image(dfss.iloc[i, j], width=100, caption='', use_column_width=True)
+                        else:
+                            cols[j].write(0)
+                
+                
     except:
         st.write('Please load the data to continue..')
                 
