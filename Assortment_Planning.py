@@ -34,6 +34,7 @@ from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 import time
 from time import sleep
+from PIL import Image
 
 rad = st.sidebar.radio('Navigation',['Assortment','Shelf Space Optimization','Market Basket'])
 
