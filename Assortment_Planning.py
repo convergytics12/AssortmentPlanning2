@@ -83,11 +83,11 @@ if rad=='Assortment':
             a,b,c = st.columns(3)
         
             with a:
-               min1 = st.number_input("Min space for Cookies category")
+               min1 = st.number_input("Min space for Cookies Biscuit")
             with b:
-                min2 = st.number_input('Min space for Digestive category')
+                min2 = st.number_input('Min space for Digestive Biscuits')
             with c:
-                min3 = st.number_input('Min space for Choco-Chip category')
+                min3 = st.number_input('Min space for Choco-Chip Biscuits')
                 
                 
             Total_area = st.number_input('Total space')
