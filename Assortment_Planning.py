@@ -52,12 +52,12 @@ if rad=='Assortment':
             df=pd.read_excel(f)
             df.head()
         
-            dfl=np.log10(df.loc[:,'Space-Sports':'Everyday Wear'])
+            dfl=np.log10(df.loc[:,'Space-Cookies':'Sales-Choco-Chip'])
         
-            x=dfl[['Space-Sports','Space-Luxury','Space- Everyday-wear']]
-            y_sports=dfl[['Sports']]
-            y_luxury=dfl[['Luxury']]
-            y_everyday=dfl[['Everyday Wear']]
+            x=dfl[['Space-Cookies','Space-Digestive','Space-Choco-Chip']]
+            y_sports=dfl[['Sales-Cookies']]
+            y_luxury=dfl[['Sales-Digestive']]
+            y_everyday=dfl[['Sales-Choco-Chip']]
         
             model_sports=LinearRegression()
             model_luxury=LinearRegression()
@@ -83,11 +83,11 @@ if rad=='Assortment':
             a,b,c = st.columns(3)
         
             with a:
-               min1 = st.number_input("Min space for Sports category")
+               min1 = st.number_input("Min space for Cookies category")
             with b:
-                min2 = st.number_input('Min space for Luxury category')
+                min2 = st.number_input('Min space for Digestive category')
             with c:
-                min3 = st.number_input('Min space for Everyday-wear category')
+                min3 = st.number_input('Min space for Choco-Chip category')
                 
                 
             Total_area = st.number_input('Total space')
@@ -96,16 +96,16 @@ if rad=='Assortment':
             variables = [min1,min2,min3]
         
             def assortment(variables):
-                sports_sales=((10**sports_intercept)*(variables[0]**sports_coef['Space-Sports'])*(variables[1]**sports_coef['Space-Luxury'])*
-                             (variables[2]**sports_coef['Space- Everyday-wear']))
+                sports_sales=((10**sports_intercept)*(variables[0]**sports_coef['Space-Cookies'])*(variables[1]**sports_coef['Space-Digestive'])*
+                             (variables[2]**sports_coef['Space-Choco-Chip']))
                 
-                luxury_sales=((10**luxury_intercept)*(variables[0]**luxury_coef['Space-Sports'])*(variables[1]**luxury_coef['Space-Luxury'])*
-                             (variables[2]**luxury_coef['Space- Everyday-wear']))
+                luxury_sales=((10**luxury_intercept)*(variables[0]**luxury_coef['Space-Cookies'])*(variables[1]**luxury_coef['Space-Digestive'])*
+                             (variables[2]**luxury_coef['Space-Choco-Chip']))
                 
-                everyday_sales=((10**everyday_intercept)*(variables[0]**everyday_coef['Space-Sports'])*(variables[1]**everyday_coef['Space-Luxury'])*
-                             (variables[2]**everyday_coef['Space- Everyday-wear']))
+                everyday_sales=((10**everyday_intercept)*(variables[0]**everyday_coef['Space-Cookies'])*(variables[1]**everyday_coef['Space-Digestive')*
+                             (variables[2]**everyday_coef['Space-Choco-Chip']))
                 
-                profit=(sports_sales*df['Sports.1'][0])+(luxury_sales*df['Luxury.1'][0])+(everyday_sales*df['Everyday Wear.1'][0])
+                profit=(sports_sales*df['Avg_Margin_Cookies'][0])+(luxury_sales*df['Avg_Margin_Digestive'][0])+(everyday_sales*df['Avg_Margin_Choco_Chip'][0])
                 
                 return (-profit)
         
@@ -139,9 +139,9 @@ if rad=='Assortment':
                     
                 st.success('Optimization Completed')
                 st.write('Max Weekly Profit: Rs',-Profit)
-                st.write('Optimized space for sports wear:',round(sports,2),'m2')
-                st.write('Optimized space for luxury wear:',round(luxury,2),'m2')
-                st.write('Optimized space for everydaywear:',round(everyday,2),'m2')
+                st.write('Optimized space for Cookies:',round(sports,2),'m2')
+                st.write('Optimized space for Digestive:',round(luxury,2),'m2')
+                st.write('Optimized space for Choco-Chip:',round(everyday,2),'m2')
                 
     except:
         st.write('Please load the data to continue..')
