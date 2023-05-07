@@ -154,8 +154,8 @@ if rad=='Shelf Space Optimization':
     
     try:
     
-        file1 = st.file_uploader('Upload a file',key='f1')
-        file2 = st.file_uploader('Upload a file',key='f2')
+        file1 = st.file_uploader('Upload the data',key='f1')
+        file2 = st.file_uploader('Upload the current plan of shelf',key='f2')
         
     
         if (file1,file2) is not None:
