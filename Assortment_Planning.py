@@ -139,9 +139,9 @@ if rad=='Assortment':
                     
                 st.success('Optimization Completed')
                 st.write('Max Weekly Profit: Rs',-Profit)
-                st.write('Optimized space for Cookies:',round(sports,2),'m2')
-                st.write('Optimized space for Digestive:',round(luxury,2),'m2')
-                st.write('Optimized space for Choco-Chip:',round(everyday,2),'m2')
+                st.write('Optimized space for Cookies Biscuits:',round(sports,2),'m2')
+                st.write('Optimized space for Digestive Biscuits:',round(luxury,2),'m2')
+                st.write('Optimized space for Choco-Chip Biscuits:',round(everyday,2),'m2')
                 
     except:
         st.write('Please load the data to continue..')
