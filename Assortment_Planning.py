@@ -102,7 +102,7 @@ if rad=='Assortment':
                 luxury_sales=((10**luxury_intercept)*(variables[0]**luxury_coef['Space-Cookies'])*(variables[1]**luxury_coef['Space-Digestive'])*
                              (variables[2]**luxury_coef['Space-Choco-Chip']))
                 
-                everyday_sales=((10**everyday_intercept)*(variables[0]**everyday_coef['Space-Cookies'])*(variables[1]**everyday_coef['Space-Digestive')*
+                everyday_sales=((10**everyday_intercept)*(variables[0]**everyday_coef['Space-Cookies'])*(variables[1]**everyday_coef['Space-Digestive'])*
                              (variables[2]**everyday_coef['Space-Choco-Chip']))
                 
                 profit=(sports_sales*df['Avg_Margin_Cookies'][0])+(luxury_sales*df['Avg_Margin_Digestive'][0])+(everyday_sales*df['Avg_Margin_Choco_Chip'][0])
